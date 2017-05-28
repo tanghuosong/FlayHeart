@@ -1,6 +1,6 @@
-package com.flay.heart.controller;
+package com.fly.heart.controller;
 
-import com.flay.heart.bean.Topic;
+import com.fly.heart.bean.Topic;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

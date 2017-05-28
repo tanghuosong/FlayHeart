@@ -1,6 +1,6 @@
-package com.flay.heart.service;
+package com.fly.heart.service;
 
-import com.flay.heart.bean.User;
+import com.fly.heart.bean.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

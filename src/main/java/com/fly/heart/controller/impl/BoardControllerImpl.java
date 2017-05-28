@@ -1,8 +1,8 @@
-package com.flay.heart.controller.impl;
+package com.fly.heart.controller.impl;
 
-import com.flay.heart.bean.Board;
-import com.flay.heart.controller.BoardController;
-import com.flay.heart.service.BoardService;
+import com.fly.heart.bean.Board;
+import com.fly.heart.controller.BoardController;
+import com.fly.heart.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -14,7 +14,7 @@ import java.util.Map;
  * description:
  **/
 @Controller
-public class BoardControllerImpl implements BoardController{
+public class BoardControllerImpl implements BoardController {
 
     public BoardControllerImpl(){
         System.out.println("进入-----BoardControllerImpl");

@@ -1,4 +1,4 @@
-package com.flay.heart.bean;
+package com.fly.heart.bean;
 
 import javax.persistence.*;
 

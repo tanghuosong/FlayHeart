@@ -1,8 +1,8 @@
-package com.flay.heart.service.impl;
+package com.fly.heart.service.impl;
 
-import com.flay.heart.bean.User;
-import com.flay.heart.dao.UserDao;
-import com.flay.heart.service.UserService;
+import com.fly.heart.bean.User;
+import com.fly.heart.dao.UserDao;
+import com.fly.heart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

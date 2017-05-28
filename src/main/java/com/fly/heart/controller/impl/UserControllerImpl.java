@@ -1,8 +1,8 @@
-package com.flay.heart.controller.impl;
+package com.fly.heart.controller.impl;
 
-import com.flay.heart.bean.User;
-import com.flay.heart.controller.UserController;
-import com.flay.heart.service.UserService;
+import com.fly.heart.bean.User;
+import com.fly.heart.controller.UserController;
+import com.fly.heart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

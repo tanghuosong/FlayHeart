@@ -1,10 +1,10 @@
-package com.flay.heart.service.impl;
+package com.fly.heart.service.impl;
 
-import com.flay.heart.bean.Board;
-import com.flay.heart.bean.Topic;
-import com.flay.heart.dao.BoardDao;
-import com.flay.heart.dao.TopicDao;
-import com.flay.heart.service.BoardService;
+import com.fly.heart.bean.Board;
+import com.fly.heart.bean.Topic;
+import com.fly.heart.dao.BoardDao;
+import com.fly.heart.dao.TopicDao;
+import com.fly.heart.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

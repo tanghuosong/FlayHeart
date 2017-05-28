@@ -1,8 +1,8 @@
-package com.flay.heart.service.impl;
+package com.fly.heart.service.impl;
 
-import com.flay.heart.bean.Topic;
-import com.flay.heart.dao.TopicDao;
-import com.flay.heart.service.TopicService;
+import com.fly.heart.bean.Topic;
+import com.fly.heart.dao.TopicDao;
+import com.fly.heart.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * description:
  **/
 @Service
-public class TopicServiceImpl implements TopicService{
+public class TopicServiceImpl implements TopicService {
 
     @Autowired
     TopicDao topicDao;

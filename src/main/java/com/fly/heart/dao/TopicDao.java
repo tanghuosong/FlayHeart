@@ -1,6 +1,6 @@
-package com.flay.heart.dao;
+package com.fly.heart.dao;
 
-import com.flay.heart.bean.Topic;
+import com.fly.heart.bean.Topic;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
