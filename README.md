@@ -1,4 +1,4 @@
-# FlayHeart
+# FlyHeart
 
 ### 关于本项目
     1. 学习Spring Boot 框架，使用jpa操作持久层。
