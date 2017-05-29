@@ -1,4 +1,4 @@
-package com.fly.heart.controller;
+package com.fly.heart.v1;
 
 import com.fly.heart.bean.User;
 import org.springframework.stereotype.Controller;

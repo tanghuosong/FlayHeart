@@ -1,7 +1,11 @@
 package com.fly.heart.bean;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "tb_topic")
@@ -27,12 +31,12 @@ public class Topic implements Serializable{
   @Column(name = "statedisplay")
   private String stateDisplay;
   @Column(name = "posttime")
-  private String postTime;
+  private Timestamp postTime;
 
   public Topic() {
   }
 
-  public Topic(String title, String content, Long views, Long state, Long favorites, Long boardId, Long userId, String stateDisplay, String postTime) {
+  public Topic(String title, String content, Long views, Long state, Long favorites, Long boardId, Long userId, String stateDisplay, Timestamp postTime) {
     this.title = title;
     this.content = content;
     this.views = views;
@@ -117,10 +121,19 @@ public class Topic implements Serializable{
   }
 
   public String getPostTime() {
-    return postTime;
+    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Long time=new Long(postTime.getTime());
+    String d = format.format(time);
+    Date date = null;
+//    try {
+//       date = format.parse(d);
+//    } catch (ParseException e) {
+//      e.printStackTrace();
+//    }
+    return d;
   }
 
-  public void setPostTime(String postTime) {
+  public void setPostTime(Timestamp postTime) {
     this.postTime = postTime;
   }
 }

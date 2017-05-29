@@ -6,6 +6,10 @@ import com.fly.heart.dao.BoardDao;
 import com.fly.heart.dao.TopicDao;
 import com.fly.heart.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,13 +42,16 @@ public class BoardServiceImpl implements BoardService{
     public List<Map<String,Object>> getBoardWithTopics() {
         List<Map<String,Object>> ls = new ArrayList<>();
         for(Board board :boardDao.findAll()){
-            List<Topic> list = topicDao.findAllByBoardId(board.getId());
+//            List<Topic> list = topicDao.findAllByBoardId(board.getId());
+            Sort sort = new Sort(Sort.Direction.DESC, "id");
+            Pageable pageable = new PageRequest(0, 10, sort);
+            Page<Topic> list = topicDao.findAllByBoardIdAndGroupById(board.getId(),pageable);
             Map<String,Object> map = new HashMap<>();
             map.put("board",board);
-            map.put("topicCount",list.size());
             map.put("topicList",list);
             ls.add(map);
         }
         return ls;
     }
+
 }

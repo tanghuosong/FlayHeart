@@ -9,7 +9,6 @@ public class FlyHeartApplication {
 	public FlyHeartApplication(){
 		System.out.println("启动服务器......");
 	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(FlyHeartApplication.class, args);
 	}

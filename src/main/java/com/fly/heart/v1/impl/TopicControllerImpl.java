@@ -1,9 +1,10 @@
-package com.fly.heart.controller.impl;
+package com.fly.heart.v1.impl;
 
 import com.fly.heart.bean.Topic;
-import com.fly.heart.controller.TopicController;
 import com.fly.heart.service.TopicService;
+import com.fly.heart.v1.TopicController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public class TopicControllerImpl implements TopicController{
 
     @Autowired
-    TopicService topicService;
+    private TopicService topicService;
 
     @Override
     public List<Topic> getTopicByBoardId(long boardId) {
@@ -26,5 +27,10 @@ public class TopicControllerImpl implements TopicController{
     @Override
     public List<Topic> getTopicByUserId(long userId) {
         return topicService.getTopicByUserId(userId);
+    }
+
+    @Override
+    public Page<Topic> getBoardByBoardIdWithPage(long boardId, int pageSize, int pageNum) {
+        return topicService.getBoardWithTopTen(boardId,pageSize,pageNum);
     }
 }

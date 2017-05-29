@@ -1,7 +1,7 @@
-package com.fly.heart.controller.impl;
+package com.fly.heart.v1.impl;
 
 import com.fly.heart.bean.Board;
-import com.fly.heart.controller.BoardController;
+import com.fly.heart.v1.BoardController;
 import com.fly.heart.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

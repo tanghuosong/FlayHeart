@@ -1,6 +1,7 @@
-package com.fly.heart.controller;
+package com.fly.heart.v1;
 
 import com.fly.heart.bean.Topic;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,4 +24,8 @@ public interface TopicController {
     @RequestMapping(value = "/getTopicsByUserId",method = RequestMethod.GET)
     @ResponseBody
     List<Topic> getTopicByUserId(long boardId);
+
+    @RequestMapping(value = "/getBoardByBoardIdWithPage",method = RequestMethod.GET)
+    @ResponseBody
+    Page<Topic> getBoardByBoardIdWithPage(long boardId, int pageSize, int pageNum);
 }

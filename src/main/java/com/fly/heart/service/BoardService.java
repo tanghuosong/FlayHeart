@@ -1,6 +1,8 @@
 package com.fly.heart.service;
 
 import com.fly.heart.bean.Board;
+import com.fly.heart.bean.Topic;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,4 +20,5 @@ public interface BoardService {
     Board getBoardById(Long id);
 
     List<Map<String,Object>> getBoardWithTopics();
+
 }

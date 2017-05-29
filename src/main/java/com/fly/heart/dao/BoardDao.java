@@ -16,4 +16,5 @@ public interface BoardDao extends CrudRepository<Board,Long> {
 
     @Override
     Board findOne(Long id);
+
 }
