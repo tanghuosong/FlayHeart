@@ -42,13 +42,12 @@ public class BoardServiceImpl implements BoardService{
     public List<Map<String,Object>> getBoardWithTopics() {
         List<Map<String,Object>> ls = new ArrayList<>();
         for(Board board :boardDao.findAll()){
-//            List<Topic> list = topicDao.findAllByBoardId(board.getId());
             Sort sort = new Sort(Sort.Direction.DESC, "id");
             Pageable pageable = new PageRequest(0, 10, sort);
-            Page<Topic> list = topicDao.findAllByBoardIdAndGroupById(board.getId(),pageable);
+            Page<Topic> page = topicDao.findAllByBoardId(board.getId(),pageable);
             Map<String,Object> map = new HashMap<>();
             map.put("board",board);
-            map.put("topicList",list);
+            map.put("topicList",page);
             ls.add(map);
         }
         return ls;

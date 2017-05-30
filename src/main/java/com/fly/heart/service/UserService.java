@@ -1,6 +1,7 @@
 package com.fly.heart.service;
 
 import com.fly.heart.bean.User;
+import com.fly.heart.utils.Message;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,4 +19,8 @@ public interface UserService {
     Map<String, Object> getAllUsers();
 
     User getUserById(Long id);
+
+    Map<String,Object> userLogin(String name,String password);
+
+    Message userRegister(User user);
 }

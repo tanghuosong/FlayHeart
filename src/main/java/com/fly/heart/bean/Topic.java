@@ -19,9 +19,9 @@ public class Topic implements Serializable{
   @Column(name = "content")
   private String content;
   @Column(name = "views")
-  private Long views;
+  private int views;
   @Column(name = "state")
-  private Long state;
+  private int state;
   @Column(name = "favorites")
   private Long favorites;
   @Column(name = "boardid")
@@ -36,7 +36,7 @@ public class Topic implements Serializable{
   public Topic() {
   }
 
-  public Topic(String title, String content, Long views, Long state, Long favorites, Long boardId, Long userId, String stateDisplay, Timestamp postTime) {
+  public Topic(String title, String content, int views, int state, Long favorites, Long boardId, Long userId, String stateDisplay, Timestamp postTime) {
     this.title = title;
     this.content = content;
     this.views = views;
@@ -72,19 +72,19 @@ public class Topic implements Serializable{
     this.content = content;
   }
 
-  public Long getViews() {
+  public int getViews() {
     return views;
   }
 
-  public void setViews(Long views) {
+  public void setViews(int views) {
     this.views = views;
   }
 
-  public Long getState() {
+  public int getState() {
     return state;
   }
 
-  public void setState(Long state) {
+  public void setState(int state) {
     this.state = state;
   }
 
@@ -124,12 +124,6 @@ public class Topic implements Serializable{
     SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Long time=new Long(postTime.getTime());
     String d = format.format(time);
-    Date date = null;
-//    try {
-//       date = format.parse(d);
-//    } catch (ParseException e) {
-//      e.printStackTrace();
-//    }
     return d;
   }
 

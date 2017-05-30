@@ -20,12 +20,19 @@ public class HomeViewController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "index.html",method = RequestMethod.GET)
+    @RequestMapping(value = "/index.html",method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView index(ModelAndView modelAndView){
         User user = userService.getUserById(1L);
         modelAndView = new ModelAndView();
         modelAndView.addObject(user);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/home/login.html",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView login(ModelAndView modelAndView){
         return modelAndView;
     }
 

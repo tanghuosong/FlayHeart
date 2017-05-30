@@ -1,6 +1,8 @@
 package com.fly.heart.bean;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "tb_user")
@@ -21,9 +23,9 @@ public class User {
   @Column(name = "email")
   private String email;
   @Column(name = "registtime")
-  private String registerTime;
+  private Timestamp registerTime;
   @Column(name = "lastlogintime")
-  private String lastLoginTime;
+  private Timestamp lastLoginTime;
   @Column(name = "statedisplay")
   private String stateDisplay;
   @Column(name = "focuscount")
@@ -32,24 +34,10 @@ public class User {
   public User() {
   }
 
-  public User(String name, String phone, String password, String sex, Long state, String email, String registerTime,
-              String lastLoginTime, String stateDisplay, Long focusCount) {
+  public User(String name, String phone, String password, String sex, Long state, String email, Timestamp registerTime, Timestamp lastLoginTime, String stateDisplay, Long focusCount) {
     this.name = name;
     this.phone = phone;
     this.password = password;
-    this.sex = sex;
-    this.state = state;
-    this.email = email;
-    this.registerTime = registerTime;
-    this.lastLoginTime = lastLoginTime;
-    this.stateDisplay = stateDisplay;
-    this.focusCount = focusCount;
-  }
-
-  public User(String name, String phone, String sex, Long state, String email, String registerTime,
-              String lastLoginTime, String stateDisplay, Long focusCount) {
-    this.name = name;
-    this.phone = phone;
     this.sex = sex;
     this.state = state;
     this.email = email;
@@ -116,18 +104,24 @@ public class User {
   }
 
   public String getRegisterTime() {
-    return registerTime;
+    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Long time=new Long(registerTime.getTime());
+    String d = format.format(time);
+    return d;
   }
 
-  public void setRegisterTime(String registerTime) {
+  public void setRegisterTime(Timestamp registerTime) {
     this.registerTime = registerTime;
   }
 
   public String getLastLoginTime() {
-    return lastLoginTime;
+    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Long time=new Long(lastLoginTime.getTime());
+    String d = format.format(time);
+    return d;
   }
 
-  public void setLastLoginTime(String lastLoginTime) {
+  public void setLastLoginTime(Timestamp lastLoginTime) {
     this.lastLoginTime = lastLoginTime;
   }
 

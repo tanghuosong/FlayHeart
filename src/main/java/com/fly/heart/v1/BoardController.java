@@ -16,7 +16,7 @@ import java.util.Map;
  * description:Board 类控制器
  **/
 
-@RequestMapping(value = "/board")
+@RequestMapping(value = "/v1/board")
 @Controller
 public interface BoardController {
 

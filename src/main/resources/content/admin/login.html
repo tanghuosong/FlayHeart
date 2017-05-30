@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>后台登录界面</title>
+</head>
+<body>
+<form action="#" th:action="@{/admin/managerLogin}" method="post" modelAttribute="manager" th:object="${com.fly.heart.bean.Manager}">
+    <label for="managerName">账号</label><input id="managerName" type="text" th:field="*{name}"/>
+    <label for="managerPwd">密码</label><input id="managerPwd" type="text" th:field="*{password}"/>
+    <button type="submit">登录</button>
+</form>
+</body>
+</html>

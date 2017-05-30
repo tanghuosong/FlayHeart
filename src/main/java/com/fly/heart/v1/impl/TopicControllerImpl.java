@@ -2,6 +2,7 @@ package com.fly.heart.v1.impl;
 
 import com.fly.heart.bean.Topic;
 import com.fly.heart.service.TopicService;
+import com.fly.heart.utils.Message;
 import com.fly.heart.v1.TopicController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,8 +30,24 @@ public class TopicControllerImpl implements TopicController{
         return topicService.getTopicByUserId(userId);
     }
 
+
     @Override
-    public Page<Topic> getBoardByBoardIdWithPage(long boardId, int pageSize, int pageNum) {
-        return topicService.getBoardWithTopTen(boardId,pageSize,pageNum);
+    public Page<Topic> getBoardByCondition(String conditionType, long conditionValue, int pageSize, int pageNum) {
+        return topicService.getTopicByConditionType(conditionType,conditionValue,pageSize,pageNum);
+    }
+
+    @Override
+    public Message writePost(long boardId, String title, String content) {
+        return topicService.writeTopic(boardId,title,content);
+    }
+
+    @Override
+    public Message updateTopicState(int state, long topicId) {
+        return topicService.updateTopicState(state,topicId);
+    }
+
+    @Override
+    public Message deleteTopicById(long topicId) {
+        return topicService.deleteTopic(topicId);
     }
 }

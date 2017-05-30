@@ -2,6 +2,7 @@ package com.fly.heart.v1.impl;
 
 import com.fly.heart.bean.User;
 import com.fly.heart.service.UserService;
+import com.fly.heart.utils.Message;
 import com.fly.heart.v1.UserController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,5 +37,15 @@ public class UserControllerImpl implements UserController{
     @Override
     public User getUserById(long id) {
         return userService.getUserById(id);
+    }
+
+    @Override
+    public Map<String, Object> userLogin(String name, String password) {
+        return userService.userLogin(name,password);
+    }
+
+    @Override
+    public Message userRegister(User user) {
+        return userService.userRegister(user);
     }
 }

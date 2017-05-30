@@ -1,6 +1,7 @@
 package com.fly.heart.v1;
 
 import com.fly.heart.bean.User;
+import com.fly.heart.utils.Message;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +14,7 @@ import java.util.Map;
  * created by tanghuosong 2017/5/28
  * description: User 控制器
  **/
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/v1/user")
 @Controller
 public interface UserController {
 
@@ -28,4 +29,12 @@ public interface UserController {
     @RequestMapping(value = "/getUserById",method = RequestMethod.GET)
     @ResponseBody
     User getUserById(long id);
+
+    @RequestMapping(value = "/userLogin",method = RequestMethod.POST)
+    @ResponseBody
+    Map<String,Object> userLogin(String name, String password);
+
+    @RequestMapping(value = "/userRegister" ,method = RequestMethod.POST)
+    @ResponseBody
+    Message userRegister(User user);
 }
