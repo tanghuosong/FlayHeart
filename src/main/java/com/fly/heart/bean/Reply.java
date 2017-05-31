@@ -3,6 +3,7 @@ package com.fly.heart.bean;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "tb_reply")
@@ -61,8 +62,11 @@ public class Reply implements Serializable{
     this.content = content;
   }
 
-  public Timestamp getReplayTime() {
-    return replayTime;
+  public String getReplayTime() {
+      SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      Long time=new Long(replayTime.getTime());
+      String d = format.format(time);
+      return d;
   }
 
   public void setReplayTime(Timestamp replayTime) {

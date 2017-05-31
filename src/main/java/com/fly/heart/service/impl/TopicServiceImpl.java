@@ -1,8 +1,10 @@
 package com.fly.heart.service.impl;
 
+import com.fly.heart.bean.Reply;
 import com.fly.heart.bean.Topic;
 import com.fly.heart.bean.User;
 import com.fly.heart.constants.TopicState;
+import com.fly.heart.dao.ReplyDao;
 import com.fly.heart.dao.TopicDao;
 import com.fly.heart.service.TopicService;
 import com.fly.heart.utils.Message;
@@ -18,7 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * created by tanghuosong 2017/5/28
@@ -33,6 +37,8 @@ public class TopicServiceImpl implements TopicService {
     HttpServletRequest request;
     @Autowired
     HttpSession session;
+    @Autowired
+    ReplyDao replyDao;
 
     @Override
     public Message writeTopic(long boardId, String title, String content) {
@@ -171,5 +177,18 @@ public class TopicServiceImpl implements TopicService {
             default:break;
         }
         return page;
+    }
+
+    @Override
+    public Map<String, Object> getTopicByIdWithReply(long topicId) {
+        Map<String,Object> map = new HashMap<>();
+        Topic topic = topicDao.findOne(topicId);
+        Sort sort = new Sort(Sort.Direction.DESC,"id");
+        Pageable pageable = new PageRequest(0,10,sort);
+        Page<Reply> page = replyDao.findByTopicId(topicId,pageable);
+        map.put("topic",topic);
+        map.put("replyList",page);
+
+        return map;
     }
 }

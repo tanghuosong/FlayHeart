@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * created by tanghuosong 2017/5/28
@@ -31,4 +32,6 @@ public interface TopicService {
     * pageNum        为查询第几页
     * */
     Page<Topic> getTopicByConditionType(String conditionType, long conditionValue,int pageSize,int pageNum);
+
+    Map<String,Object> getTopicByIdWithReply(long topicId);
 }

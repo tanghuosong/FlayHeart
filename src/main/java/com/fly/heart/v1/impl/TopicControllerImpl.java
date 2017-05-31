@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * created by tanghuosong 2017/5/28
@@ -49,5 +50,10 @@ public class TopicControllerImpl implements TopicController{
     @Override
     public Message deleteTopicById(long topicId) {
         return topicService.deleteTopic(topicId);
+    }
+
+    @Override
+    public Map<String, Object> getTopicByIdWithReply(long topicId) {
+        return topicService.getTopicByIdWithReply(topicId);
     }
 }

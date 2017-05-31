@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * created by tanghuosong 2017/5/30
- * description:
+ * description: 管理员服务类
  **/
 @Service
 public class ManagerServiceImpl implements ManagerService{
@@ -25,9 +25,8 @@ public class ManagerServiceImpl implements ManagerService{
 
 
     @Override
-    public Map<String, Object> managerLogin(String name, String password) {
+    public Message managerLogin(String name, String password) {
         Message message = new Message();
-        Map<String,Object> map = new HashMap<>();
         Manager manager = null;
         if(null == name || "".equals(name) || null == password || "".equals(password)){
             message.setSuccess(false);
@@ -48,8 +47,6 @@ public class ManagerServiceImpl implements ManagerService{
                 message.setContent("系统异常，登录失败:"+e.getMessage());
             }
         }
-        map.put("message",message);
-        map.put("manager",manager);
-        return map;
+        return message;
     }
 }

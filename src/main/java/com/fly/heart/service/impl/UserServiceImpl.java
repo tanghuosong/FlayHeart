@@ -4,6 +4,7 @@ import com.fly.heart.bean.User;
 import com.fly.heart.dao.UserDao;
 import com.fly.heart.service.UserService;
 import com.fly.heart.utils.Message;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private static Logger logger = Logger.getLogger(UserServiceImpl.class);
     @Autowired
     private UserDao userDao;
     @Autowired
@@ -60,6 +62,7 @@ public class UserServiceImpl implements UserService {
                 if(result ==1){
                     message.setContent("登录成功！");
                     message.setSuccess(true);
+                    logger.info("用户["+user.getName()+"]登录了！");
                     session.setAttribute("user",user);
                 }
             }else{

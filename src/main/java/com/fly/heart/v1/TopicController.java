@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * created by tanghuosong 2017/5/28
@@ -42,4 +43,8 @@ public interface TopicController {
     @RequestMapping(value = "/deleteTopicById",method = RequestMethod.POST)
     @ResponseBody
     Message deleteTopicById(long topicId);
+
+    @RequestMapping(value = "/getTopicByIdWithReply",method = RequestMethod.GET)
+    @ResponseBody
+    Map<String,Object> getTopicByIdWithReply(long topicId);
 }
