@@ -13,5 +13,5 @@ public class TopicState {
     public final static String NO_REPLAY_DISPLAY = "不可评论";
 
     public final static int INVISIBLE = 300;
-    public final static String INVISBLE_DISPLAY = "仅自己可见";
+    public final static String INVISIBLE_DISPLAY = "仅自己可见";
 }

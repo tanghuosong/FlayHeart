@@ -2,6 +2,8 @@ package com.fly.heart.v1;
 
 import com.fly.heart.bean.Board;
 import com.fly.heart.bean.Topic;
+import com.fly.heart.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,18 +20,27 @@ import java.util.Map;
 
 @RequestMapping(value = "/v1/board")
 @Controller
-public interface BoardController {
+public class BoardController {
+
+    @Autowired
+    BoardService boardService;
 
     @RequestMapping(value = "/getAllBoard",method = RequestMethod.GET)
     @ResponseBody
-    List<Board> getAllBoard();
+    List<Board> getAllBoard(){
+        return boardService.getAllBoard();
+    }
 
     @RequestMapping(value = "/getBoardById",method = RequestMethod.GET)
     @ResponseBody
-    Board getBoardById(long id);
+    Board getBoardById(long id){
+        return boardService.getBoardById(id);
+    }
 
     @RequestMapping(value = "/getBoardWithTopic",method = RequestMethod.GET)
     @ResponseBody
-    List<Map<String,Object>> getBoardWithTopic();
+    List<Map<String,Object>> getBoardWithTopic(){
+        return boardService.getBoardWithTopics();
+    }
 
 }

@@ -124,7 +124,7 @@ public class TopicServiceImpl implements TopicService {
                         stateDisplay = TopicState.NO_REPLAY_DISPLAY;
                         break;
                     case 300:
-                        stateDisplay = TopicState.INVISBLE_DISPLAY;
+                        stateDisplay = TopicState.INVISIBLE_DISPLAY;
                         break;
                 }
                 int result  = topicDao.updateTopicState(state,stateDisplay,topicId);

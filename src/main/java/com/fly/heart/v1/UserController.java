@@ -1,7 +1,9 @@
 package com.fly.heart.v1;
 
 import com.fly.heart.bean.User;
+import com.fly.heart.service.UserService;
 import com.fly.heart.utils.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,25 +18,38 @@ import java.util.Map;
  **/
 @RequestMapping(value = "/v1/user")
 @Controller
-public interface UserController {
+public class UserController {
+
+    @Autowired
+    private UserService userService ;
 
     @RequestMapping( value = "/getAllUser",method = RequestMethod.GET)
     @ResponseBody
-    List<User> getAll();
+    List<User> getAll(){
+        return  userService.getAllUser();
+    }
 
     @RequestMapping(value = "/getAllUsers",method = RequestMethod.GET)
     @ResponseBody
-    Map<String,Object> getAllUsers();
+    Map<String,Object> getAllUsers(){
+        return userService.getAllUsers();
+    }
 
     @RequestMapping(value = "/getUserById",method = RequestMethod.GET)
     @ResponseBody
-    User getUserById(long id);
+    User getUserById(long id){
+        return userService.getUserById(id);
+    }
 
     @RequestMapping(value = "/userLogin",method = RequestMethod.POST)
     @ResponseBody
-    Map<String,Object> userLogin(String name, String password);
+    Map<String,Object> userLogin(String name, String password){
+        return userService.userLogin(name,password);
+    }
 
     @RequestMapping(value = "/userRegister" ,method = RequestMethod.POST)
     @ResponseBody
-    Message userRegister(User user);
+    Message userRegister(User user){
+        return userService.userRegister(user);
+    }
 }

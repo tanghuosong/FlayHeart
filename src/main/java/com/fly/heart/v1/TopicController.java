@@ -1,8 +1,10 @@
 package com.fly.heart.v1;
 
 import com.fly.heart.bean.Topic;
+import com.fly.heart.service.TopicService;
 import com.fly.heart.utils.Message;
 import javafx.geometry.Pos;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,33 +20,50 @@ import java.util.Map;
  **/
 @RequestMapping (value = "/v1/topic")
 @Controller
-public interface TopicController {
+public class TopicController {
+
+    @Autowired
+    private TopicService topicService;
 
     @RequestMapping(value = "/getTopicsByBoardId",method = RequestMethod.GET)
     @ResponseBody
-    List<Topic> getTopicByBoardId(long boardId);
+    List<Topic> getTopicByBoardId(long boardId){
+        return topicService.getTopicByBoardId(boardId);
+    }
 
     @RequestMapping(value = "/getTopicsByUserId",method = RequestMethod.GET)
     @ResponseBody
-    List<Topic> getTopicByUserId(long boardId);
+    List<Topic> getTopicByUserId(long userId){
+        return topicService.getTopicByUserId(userId);
+    }
 
     @RequestMapping(value = "/getTopicByCondition",method = RequestMethod.GET)
     @ResponseBody
-    Page<Topic> getBoardByCondition(String conditionType,long conditionValue,int pageSize,int pageNum);
+    Page<Topic> getBoardByCondition(String conditionType,long conditionValue,int pageSize,int pageNum){
+        return topicService.getTopicByConditionType(conditionType,conditionValue,pageSize,pageNum);
+    }
 
     @RequestMapping(value = "/writeTopic",method = RequestMethod.POST)
     @ResponseBody
-    Message writePost(long boardId,String title,String content);
+    Message writePost(long boardId,String title,String content){
+        return topicService.writeTopic(boardId,title,content);
+    }
 
     @RequestMapping(value = "/updateTopicState",method = RequestMethod.POST)
     @ResponseBody
-    Message updateTopicState(int state, long topicId);
+    Message updateTopicState(int state, long topicId){
+        return topicService.updateTopicState(state,topicId);
+    }
 
     @RequestMapping(value = "/deleteTopicById",method = RequestMethod.POST)
     @ResponseBody
-    Message deleteTopicById(long topicId);
+    Message deleteTopicById(long topicId){
+        return topicService.deleteTopic(topicId);
+    }
 
     @RequestMapping(value = "/getTopicByIdWithReply",method = RequestMethod.GET)
     @ResponseBody
-    Map<String,Object> getTopicByIdWithReply(long topicId);
+    Map<String,Object> getTopicByIdWithReply(long topicId){
+        return topicService.getTopicByIdWithReply(topicId);
+    }
 }

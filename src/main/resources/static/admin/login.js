@@ -1,5 +1,6 @@
 $(function() {
     $("#submit").click(function () {
+        $(this).button('loading');
         $.ajax({
             type: "POST",
             url: "/v1/admin/managerLogin",
@@ -10,6 +11,7 @@ $(function() {
                 }else{
                     alert(msg.content);
                 }
+                $("#submit").button('reset');
             }
         });
     });
