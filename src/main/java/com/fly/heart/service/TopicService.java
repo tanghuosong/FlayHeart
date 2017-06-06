@@ -3,6 +3,7 @@ package com.fly.heart.service;
 import com.fly.heart.bean.Topic;
 import com.fly.heart.utils.Message;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,4 +35,5 @@ public interface TopicService {
     Page<Topic> getTopicByConditionType(String conditionType, long conditionValue,int pageSize,int pageNum);
 
     Map<String,Object> getTopicByIdWithReply(long topicId);
+
 }

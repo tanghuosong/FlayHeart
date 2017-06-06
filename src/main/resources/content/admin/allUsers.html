@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户列表</title>
+
+    <link rel="stylesheet" th:href="@{/plugins/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/css/admin/global.css}" media="all"/>
+</head>
+<body>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>用户列表</legend>
+    </fieldset>
+
+    <div class="layui-form">
+        <table class="layui-table">
+            <colgroup>
+                <col width="50"/>
+                <col width="150"/>
+                <col width="150"/>
+                <col width="200"/>
+                <col/>
+            </colgroup>
+            <thead>
+            <tr>
+                <th><input name="" lay-skin="primary" lay-filter="allChoose" type="checkbox"/></th>
+                <th>编号</th>
+                <th>标题</th>
+                <th>发表时间</th>
+                <th>内容</th>
+            </tr>
+            </thead>
+            <script id="demo" type="text/html">
+
+                {{#  layui.each(d.list, function(index, item){ }}
+                <tr>
+                <td><input name="" lay-skin="primary" type="checkbox"/></td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.stateDisplay }}</td>
+                <td>{{ item.postTime }}</td>
+                <td>{{ item.content }}</td>
+                </tr>
+                {{#  }); }}
+
+                {{#  if(d.list.length === 0){ }}
+                无数据
+                {{#  } }}
+            </script>
+            <tbody id="view"></tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/plugins/layui/layui.js}"></script>
+<script th:src="@{/jquery-3.0.0.min.js}"></script>
+<script th:src="@{/js/admin/allUsers.js}"></script>
+
+</html>

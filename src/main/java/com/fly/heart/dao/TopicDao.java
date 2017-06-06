@@ -22,6 +22,9 @@ public interface TopicDao extends CrudRepository<Topic,Long>,PagingAndSortingRep
 
     List<Topic> findAllByUserId(long userId);
 
+    @Override
+    Page<Topic> findAll(Pageable pageable);
+
     /* 根据分类ID分页查询 */
     @Query(value = "select t from Topic t where t.boardId = :boardId")
     Page<Topic> findAllByBoardId(@Param("boardId") long boardId, Pageable pageable);

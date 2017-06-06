@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -18,8 +19,8 @@ import java.util.Map;
  * created by tanghuosong 2017/5/28
  * description:
  **/
-@RequestMapping (value = "/v1/topic")
 @Controller
+@RequestMapping (value = "/v1/topic")
 public class TopicController {
 
     @Autowired
@@ -37,9 +38,9 @@ public class TopicController {
         return topicService.getTopicByUserId(userId);
     }
 
-    @RequestMapping(value = "/getTopicByCondition",method = RequestMethod.GET)
+    @RequestMapping(value = "/getTopicByCondition",method = RequestMethod.POST)
     @ResponseBody
-    Page<Topic> getBoardByCondition(String conditionType,long conditionValue,int pageSize,int pageNum){
+    Page<Topic> getTopicByCondition(String conditionType, Long conditionValue, Integer pageNum, Integer pageSize){
         return topicService.getTopicByConditionType(conditionType,conditionValue,pageSize,pageNum);
     }
 

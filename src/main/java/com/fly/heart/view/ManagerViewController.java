@@ -1,7 +1,10 @@
 package com.fly.heart.view;
 
 import com.fly.heart.bean.Manager;
+import com.fly.heart.bean.Topic;
+import com.fly.heart.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +24,8 @@ public class ManagerViewController {
 
     @Autowired
     HttpSession session;
+    @Autowired
+    TopicService topicService;
 
     @RequestMapping(value = "/login.html",method = RequestMethod.GET)
     @ResponseBody
@@ -34,6 +39,15 @@ public class ManagerViewController {
         Manager manager = (Manager) session.getAttribute("manager");
         modelAndView = new ModelAndView();
         modelAndView.addObject(manager);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/allUsers",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView allUsers(ModelAndView modelAndView,Integer pageSize,Integer pageNum){
+//        Page<Topic> topics = topicService.getTopicByConditionType("all",0L,pageSize,pageNum);
+//        System.out.println(topics.getContent().size()+"---------------------------");
+//        modelAndView.addObject("topicList",topics);
         return modelAndView;
     }
 }

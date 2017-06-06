@@ -174,7 +174,11 @@ public class TopicServiceImpl implements TopicService {
             case "state":
                 page = topicDao.findAllByState(conditionValue,pageable);
                 break;
-            default:break;
+            case "all":
+                page = topicDao.findAll(pageable);
+                break;
+            default:
+                break;
         }
         return page;
     }
@@ -191,4 +195,6 @@ public class TopicServiceImpl implements TopicService {
 
         return map;
     }
+
+
 }
