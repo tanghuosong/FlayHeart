@@ -1,10 +1,11 @@
 package com.fly.heart.bean;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -120,11 +121,9 @@ public class Topic implements Serializable{
     this.stateDisplay = stateDisplay;
   }
 
-  public String getPostTime() {
-    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Long time=new Long(postTime.getTime());
-    String d = format.format(time);
-    return d;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  public Date getPostTime() {
+    return postTime;
   }
 
   public void setPostTime(Timestamp postTime) {

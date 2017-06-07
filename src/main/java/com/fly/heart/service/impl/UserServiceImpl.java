@@ -6,6 +6,10 @@ import com.fly.heart.service.UserService;
 import com.fly.heart.utils.Message;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -29,6 +33,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUser() {
         return userDao.findAll();
+    }
+
+    @Override
+    public Page<User> getAllUserByStateWithPage(Long state, Integer pageNum, Integer pageSize) {
+        Sort sort = new Sort(Sort.Direction.DESC,"id");
+        Pageable pageable = new PageRequest(pageNum,pageSize,sort);
+        Page<User> page ;
+        switch (state.intValue()){
+            case 0:
+                page = userDao.findAll(pageable);
+                break;
+            default:
+                page = userDao.findAllByState(state,pageable);
+                break;
+        }
+        for(User u : page.getContent()){
+            u.setPassword("");
+        }
+        return page;
     }
 
     @Override

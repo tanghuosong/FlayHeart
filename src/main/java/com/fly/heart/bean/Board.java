@@ -1,8 +1,10 @@
 package com.fly.heart.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "tb_board")
@@ -72,12 +74,9 @@ public class Board {
     this.stateDisplay = stateDisplay;
   }
 
-  public String getCreateTime() {
-    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Long time=new Long(createTime.getTime());
-    String d = format.format(time);
-//    Date date = null;
-    return d;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  public Date getCreateTime() {
+    return createTime;
   }
 
   public void setCreateTime(Timestamp createTime) {

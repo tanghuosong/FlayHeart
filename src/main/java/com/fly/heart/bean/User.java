@@ -1,8 +1,10 @@
 package com.fly.heart.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "tb_user")
@@ -20,14 +22,14 @@ public class User {
   private String sex;
   @Column(name = "state")
   private Long state;
+  @Column(name = "statedisplay")
+  private String stateDisplay;
   @Column(name = "email")
   private String email;
   @Column(name = "registtime")
   private Timestamp registerTime;
   @Column(name = "lastlogintime")
   private Timestamp lastLoginTime;
-  @Column(name = "statedisplay")
-  private String stateDisplay;
   @Column(name = "focuscount")
   private Long focusCount;
 
@@ -45,6 +47,34 @@ public class User {
     this.lastLoginTime = lastLoginTime;
     this.stateDisplay = stateDisplay;
     this.focusCount = focusCount;
+  }
+
+  public User(String name, String phone, String sex, Long state, String email, Timestamp registerTime, Timestamp lastLoginTime, String stateDisplay, Long focusCount) {
+    this.name = name;
+    this.phone = phone;
+    this.sex = sex;
+    this.state = state;
+    this.email = email;
+    this.registerTime = registerTime;
+    this.lastLoginTime = lastLoginTime;
+    this.stateDisplay = stateDisplay;
+    this.focusCount = focusCount;
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", phone='" + phone + '\'' +
+            ", sex='" + sex + '\'' +
+            ", state=" + state +
+            ", email='" + email + '\'' +
+            ", registerTime=" + registerTime +
+            ", lastLoginTime=" + lastLoginTime +
+            ", stateDisplay='" + stateDisplay + '\'' +
+            ", focusCount=" + focusCount +
+            '}';
   }
 
   public Long getId() {
@@ -103,22 +133,18 @@ public class User {
     this.email = email;
   }
 
-  public String getRegisterTime() {
-    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Long time=new Long(registerTime.getTime());
-    String d = format.format(time);
-    return d;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  public Date getRegisterTime() {
+    return registerTime;
   }
 
   public void setRegisterTime(Timestamp registerTime) {
     this.registerTime = registerTime;
   }
 
-  public String getLastLoginTime() {
-    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Long time=new Long(lastLoginTime.getTime());
-    String d = format.format(time);
-    return d;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  public Date getLastLoginTime() {
+    return lastLoginTime;
   }
 
   public void setLastLoginTime(Timestamp lastLoginTime) {

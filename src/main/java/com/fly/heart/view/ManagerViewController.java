@@ -44,10 +44,13 @@ public class ManagerViewController {
 
     @RequestMapping(value = "/allUsers",method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView allUsers(ModelAndView modelAndView,Integer pageSize,Integer pageNum){
-//        Page<Topic> topics = topicService.getTopicByConditionType("all",0L,pageSize,pageNum);
-//        System.out.println(topics.getContent().size()+"---------------------------");
-//        modelAndView.addObject("topicList",topics);
+    public ModelAndView allUsers(ModelAndView modelAndView){
         return modelAndView;
     }
+    @RequestMapping(value = "/allTopics",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView allTopics(ModelAndView modelAndView){
+        return modelAndView;
+    }
+
 }
