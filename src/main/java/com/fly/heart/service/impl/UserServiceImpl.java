@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> getAllUserByStateWithPage(Long state, Integer pageNum, Integer pageSize) {
         Sort sort = new Sort(Sort.Direction.DESC,"id");
-        Pageable pageable = new PageRequest(pageNum,pageSize,sort);
+        Pageable pageable = new PageRequest(pageNum-1,pageSize,sort);
         Page<User> page ;
         switch (state.intValue()){
             case 0:

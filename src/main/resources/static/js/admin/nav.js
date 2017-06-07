@@ -1,7 +1,17 @@
 var navs = [{
+    "title": "版块管理",
+    "icon": "&#xe61d;",
+    "href": "#",
+    "spread": true,
+    "children": [{
+        "title": "添加版块",
+        "icon": "&#xe608;",
+        "href": "cop.html"
+    }]
+},{
 	"title": "用户管理",
 	"icon": "&#xe613;",
-	"spread": true,
+	"spread": false,
 	"children": [{
 		"title": "所有用户",
 		"icon": "&#xe612;",
@@ -45,17 +55,8 @@ var navs = [{
 		"href": "paging.html"
 	}]
 }, {
-	"title": "第三方组件",
-	"icon": "&#x1002;",
-	"spread": false,
-	"children": [{
-		"title": "iCheck组件",
-		"icon": "fa-check-square-o",
-		"href": "icheck.html"
-	}]
-}, {
-	"title": "地址本",
-	"icon": "fa-address-book",
+	"title": "回帖管理",
+	"icon": "&#xe63a;",
 	"href": "",
 	"spread": false,
 	"children": [{
@@ -76,18 +77,17 @@ var navs = [{
 		"href": "http://weibo.com/"
 	}]
 }, {
-	"title": "这是一级导航",
+    "title": "公告管理",
+    "icon": "&#x1002;",
+    "spread": false,
+    "children": [{
+        "title": "iCheck组件",
+        "icon": "fa-check-square-o",
+        "href": "icheck.html"
+    }]
+}, {
+	"title": "DashBoard",
 	"icon": "fa-stop-circle",
 	"href": "https://www.baidu.com",
 	"spread": false
-}, {
-	"title": "其他",
-	"icon": "fa-stop-circle",
-	"href": "#",
-	"spread": false,
-	"children": [{
-		"title": "子窗体中打开选项卡",
-		"icon": "fa-github",
-		"href": "cop.html"
-	}]
 }];

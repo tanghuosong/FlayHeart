@@ -41,6 +41,11 @@ public class ManagerViewController {
         modelAndView.addObject(manager);
         return modelAndView;
     }
+    @RequestMapping(value = "/main",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView main(ModelAndView modelAndView){
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/allUsers",method = RequestMethod.GET)
     @ResponseBody

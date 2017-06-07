@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>用户列表</title>
+    <title>帖子列表</title>
     <link rel="stylesheet" th:href="@{/plugins/layui/css/layui.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/css/admin/global.css}" media="all"/>
+
     <style>
         #pageDemo div{
             margin: 0 auto;
@@ -14,14 +15,13 @@
 </head>
 <body>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>用户列表</legend>
+        <legend>帖子列表</legend>
     </fieldset>
-    <div id="contentTable"></div>
-
-    <div id="pageDemo7" style="display:inline-block;text-align: center;width: 100%"></div>
+    <div class="layui-form" id="tableContent"></div>
+    <div id="pageDemo" style="display:inline-block;text-align: center;width: 100%"></div>
 </body>
-<script type="text/javascript" th:src="@{/jquery-3.0.0.min.js}"></script>
 <script type="text/javascript" th:src="@{/plugins/layui/layui.js}"></script>
-<script type="text/javascript" th:src="@{/js/admin/allUsers.js}"></script>
+<script th:src="@{/jquery-3.0.0.min.js}"></script>
+<script th:src="@{/js/admin/allTopics.js}"></script>
 
 </html>

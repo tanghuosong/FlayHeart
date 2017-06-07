@@ -21,26 +21,16 @@ $(function () {
     function showTable(pageNum,result) {
         var list = result.content;
         var totalPages = result.totalPages;
-        var contentHtml = '<table class="layui-table"><colgroup><col width="50"/><col width="150"/><col width="150"/><col width="200"/><col/></colgroup>'+
-            '<thead><tr><th><input name="" lay-skin="primary" lay-filter="allChoose" type="checkbox"/></th><th>编号</th><th>标题</th><th>发表时间</th><th>内容</th></tr></thead>'+
-            '<tbody id="view">';
+        var contentHtml = '';
         $.each(list,function (v,item) {
-            contentHtml +='<tr><td><input name="" lay-skin="primary" type="checkbox"/></td><td>'+item.id +'</td><td>'+item.title+'</td><td>'+item.postTime+'</td><td>'+item.content+'</td></tr>';
+            contentHtml +='<tr>' +
+                '<td>'+item.id +'</td>' +
+                '<td>'+item.title+'</td>' +
+                '<td>'+item.postTime+'</td>' +
+                '<td>'+item.content+'</td>' +
+                '</tr>';
         });
-        contentHtml = contentHtml+'</tbody></table>';
-        $("#tableContent").html(contentHtml);
-
-        layui.use('form',function () {
-            var form = layui.form();
-            //全选
-            form.on('checkbox(allChoose)', function (data) {
-                var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
-                child.each(function (index, item) {
-                    item.checked = data.elem.checked;
-                });
-                form.render('checkbox');
-            });
-        });
+        $("#view").html(contentHtml);
 
         layui.use(['laytpl','laypage'], function() {
             var laypage = layui.laypage;
@@ -51,7 +41,7 @@ $(function () {
                 curr: pageNum || 1,
                 first: result.first,
                 last:  result.last,
-                //skip: true, //开启跳页
+                skip: true, //开启跳页
                 jump: function (obj, first) {
                     if (!first) {
                         getData(obj.curr);
