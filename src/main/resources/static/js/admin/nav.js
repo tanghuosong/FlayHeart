@@ -3,7 +3,7 @@ var navs = [{
 	"icon": "&#xe613;",
 	"spread": true,
 	"children": [{
-		"title": "用户列表",
+		"title": "所有用户",
 		"icon": "&#xe612;",
 		"href": "/admin/allUsers.html"
 	}, {
@@ -28,9 +28,9 @@ var navs = [{
 	"icon": "&#xe621;",
 	"spread": false,
 	"children": [{
-		"title": "BTable",
+		"title": "所有帖子",
 		"icon": "fa-table",
-		"href": "btable.html"
+		"href": "/admin/allTopics.html"
 	}, {
 		"title": "Navbar组件",
 		"icon": "fa-navicon",

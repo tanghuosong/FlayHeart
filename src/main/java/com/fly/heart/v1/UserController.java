@@ -4,6 +4,7 @@ import com.fly.heart.bean.User;
 import com.fly.heart.service.UserService;
 import com.fly.heart.utils.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,7 @@ public class UserController {
 
     @RequestMapping(value = "/getAllUsers",method = RequestMethod.GET)
     @ResponseBody
-    Map<String,Object> getAllUsers(){
+    private Map<String,Object> getAllUsers(){
         return userService.getAllUsers();
     }
 
@@ -51,5 +52,11 @@ public class UserController {
     @ResponseBody
     Message userRegister(User user){
         return userService.userRegister(user);
+    }
+
+    @RequestMapping(value = "/getAllUserByStateWithPage",method = RequestMethod.GET)
+    @ResponseBody
+    Page<User> getAllUserByStateWithPage(Long state,Integer pageNum, Integer pageSize){
+        return userService.getAllUserByStateWithPage(state,pageNum,pageSize);
     }
 }

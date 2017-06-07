@@ -13,20 +13,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.session.Session;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * created by tanghuosong 2017/5/28
- * description:
+ ** created by tanghuosong 2017/5/28
+ ** description:
  **/
 @Service
 public class TopicServiceImpl implements TopicService {
@@ -163,7 +161,7 @@ public class TopicServiceImpl implements TopicService {
 
         Page<Topic> page = null;
         Sort sort = new Sort(Sort.Direction.DESC,"id");
-        Pageable pageable = new PageRequest(pageNum,pageSize,sort);
+        Pageable pageable = new PageRequest(pageNum-1,pageSize,sort);
         switch (conditionType){
             case "userId":
                 page =topicDao.findAllByUserId(conditionValue,pageable);
