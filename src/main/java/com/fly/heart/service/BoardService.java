@@ -2,6 +2,7 @@ package com.fly.heart.service;
 
 import com.fly.heart.bean.Board;
 import com.fly.heart.bean.Topic;
+import com.fly.heart.utils.Message;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -21,4 +22,7 @@ public interface BoardService {
 
     List<Map<String,Object>> getBoardWithTopics();
 
+    Message saveBoard(Board board);
+
+    Message deleteBoardById(Long id);
 }

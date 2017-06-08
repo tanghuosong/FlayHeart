@@ -34,6 +34,17 @@ public class Board {
     this.createTime = createTime;
   }
 
+  @Override
+  public String toString() {
+    return "Board{" +
+            "name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", state=" + state +
+            ", stateDisplay='" + stateDisplay + '\'' +
+            ", createTime=" + createTime +
+            '}';
+  }
+
   public Long getId() {
     return id;
   }
@@ -82,4 +93,5 @@ public class Board {
   public void setCreateTime(Timestamp createTime) {
     this.createTime = createTime;
   }
+
 }

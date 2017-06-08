@@ -3,6 +3,7 @@ package com.fly.heart.v1;
 import com.fly.heart.bean.Board;
 import com.fly.heart.bean.Topic;
 import com.fly.heart.service.BoardService;
+import com.fly.heart.utils.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,18 @@ public class BoardController {
     @ResponseBody
     List<Map<String,Object>> getBoardWithTopic(){
         return boardService.getBoardWithTopics();
+    }
+
+    @RequestMapping(value = "/saveBoard",method = RequestMethod.POST)
+    @ResponseBody
+    Message savaBoard(Board board){
+        return boardService.saveBoard(board);
+    }
+
+    @RequestMapping(value = "/deleteBoardById",method = RequestMethod.POST)
+    @ResponseBody
+    Message deleteBoardById(Long id){
+        return boardService.deleteBoardById(id);
     }
 
 }

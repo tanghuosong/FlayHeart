@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>帖子列表</title>
+    <link rel="stylesheet" th:href="@{/plugins/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/css/admin/global.css}" media="all"/>
+
+    <style>
+        #pageDemo div{
+            margin: 0 auto;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>版块列表</legend>
+    </fieldset>
+    <div class="layui-form" id="tableContent">
+        <table class="layui-table">
+            <colgroup>
+                <col width="80"/><col width="150"/><col/><col width="200"/><col width="200"/><col width="80"/><col width="80"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>编号</th><th>版块标题</th><th>版块描述</th><th>状态</th><th>创建时间</th><th>修改</th><th>删除</th>
+                </tr>
+            </thead>
+            <tbody id="view"></tbody>
+        </table>
+    </div>
+    <div id="pageDemo" style="display:inline-block;text-align: center;width: 100%"></div>
+</body>
+<script type="text/javascript" th:src="@{/plugins/layui/layui.js}"></script>
+<script th:src="@{/jquery-3.0.0.min.js}"></script>
+<script th:src="@{/js/admin/allBoard.js}"></script>
+
+</html>

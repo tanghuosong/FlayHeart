@@ -1,19 +1,23 @@
 var navs = [{
     "title": "版块管理",
     "icon": "&#xe61d;",
-    "href": "#",
+    "href": "/admin/allBoard.html",
     "spread": true,
     "children": [{
+        "title": "版块列表",
+        "icon": "&#xe608;",
+        "href": "/admin/allBoard.html"
+    },{
         "title": "添加版块",
         "icon": "&#xe608;",
-        "href": "cop.html"
+        "href": "/admin/addBoard.html"
     }]
 },{
 	"title": "用户管理",
 	"icon": "&#xe613;",
 	"spread": false,
 	"children": [{
-		"title": "所有用户",
+		"title": "用户列表",
 		"icon": "&#xe612;",
 		"href": "/admin/allUsers.html"
 	}, {
@@ -38,7 +42,7 @@ var navs = [{
 	"icon": "&#xe621;",
 	"spread": false,
 	"children": [{
-		"title": "所有帖子",
+		"title": "帖子列表",
 		"icon": "fa-table",
 		"href": "/admin/allTopics.html"
 	}, {

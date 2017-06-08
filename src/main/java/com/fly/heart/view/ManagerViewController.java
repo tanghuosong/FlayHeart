@@ -2,6 +2,7 @@ package com.fly.heart.view;
 
 import com.fly.heart.bean.Manager;
 import com.fly.heart.bean.Topic;
+import com.fly.heart.service.BoardService;
 import com.fly.heart.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +27,8 @@ public class ManagerViewController {
     HttpSession session;
     @Autowired
     TopicService topicService;
+    @Autowired
+    BoardService boardService;
 
     @RequestMapping(value = "/login.html",method = RequestMethod.GET)
     @ResponseBody
@@ -52,10 +55,29 @@ public class ManagerViewController {
     public ModelAndView allUsers(ModelAndView modelAndView){
         return modelAndView;
     }
+
     @RequestMapping(value = "/allTopics",method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView allTopics(ModelAndView modelAndView){
         return modelAndView;
     }
 
+    @RequestMapping(value = "/allBoard",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView allBoard(ModelAndView modelAndView){
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/addBoard",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView addBoard(ModelAndView modelAndView){
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/editBoard",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView editBoard(ModelAndView modelAndView,Long id){
+        modelAndView.addObject("board",boardService.getBoardById(id));
+        return modelAndView;
+    }
 }
