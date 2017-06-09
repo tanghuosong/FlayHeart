@@ -1,5 +1,6 @@
 package com.fly.heart.v1;
 
+import com.fly.heart.bean.Board;
 import com.fly.heart.bean.Topic;
 import com.fly.heart.service.TopicService;
 import com.fly.heart.utils.Message;
@@ -46,8 +47,8 @@ public class TopicController {
 
     @RequestMapping(value = "/writeTopic",method = RequestMethod.POST)
     @ResponseBody
-    Message writePost(long boardId,String title,String content){
-        return topicService.writeTopic(boardId,title,content);
+    Message writePost(Board board, String title, String content){
+        return topicService.writeTopic(board,title,content);
     }
 
     @RequestMapping(value = "/updateTopicState",method = RequestMethod.POST)

@@ -1,5 +1,7 @@
 package com.fly.heart.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fly.heart.bean.Board;
 import com.fly.heart.bean.Reply;
 import com.fly.heart.bean.Topic;
 import com.fly.heart.bean.User;
@@ -39,7 +41,7 @@ public class TopicServiceImpl implements TopicService {
     ReplyDao replyDao;
 
     @Override
-    public Message writeTopic(long boardId, String title, String content) {
+    public Message writeTopic(Board board, String title, String content) {
 
         Message message = new Message();
         HttpSession session = request.getSession();
@@ -53,7 +55,7 @@ public class TopicServiceImpl implements TopicService {
                 message.setContent("请输入帖子内容");
                 message.setSuccess(false);
             }else{
-                Topic topic = new Topic(title,content,0,100,0L,boardId,user.getId(),"审核通过",new Timestamp(System.currentTimeMillis()));
+                Topic topic = new Topic(title,content,0,100,0L,board,user,"审核通过",new Timestamp(System.currentTimeMillis()));
                 Topic topic1 = topicDao.save(topic);
                 if(topic1 != null){
                     message.setContent("发帖成功");
@@ -78,7 +80,7 @@ public class TopicServiceImpl implements TopicService {
             // 首先判断该用户是否有权限更新该帖子状态
             Topic topic = topicDao.findOne(topicId);
             if(topic !=null){
-                if(user.getId() == topic.getUserId()){
+                if(user.getId() == topic.getUser().getId()){
                     try{
                         topicDao.delete(topicId);
                         message.setContent("删除成功！");
@@ -112,7 +114,7 @@ public class TopicServiceImpl implements TopicService {
         if(user != null){
             // 首先判断该用户是否有权限更新该帖子状态
             Topic topic = topicDao.findOne(topicId);
-            if(user.getId() == topic.getUserId()){
+            if(user.getId() == topic.getUser().getId()){
                 String stateDisplay = TopicState.NORMAL_DISPLAY;
                 switch (state){
                     case TopicState.NORMAL:

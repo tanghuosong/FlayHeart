@@ -4,7 +4,7 @@
 $(function () {
     var pageNum = 1;
 
-    getData(pageNum)
+    getData(pageNum);
 
     function getData(pageNum) {
         $.ajax({
@@ -26,6 +26,8 @@ $(function () {
             contentHtml +='<tr>' +
                 '<td>'+item.id +'</td>' +
                 '<td>'+item.title+'</td>' +
+                '<td><a style="color: #1E9FFF;" href="javascript:void(0)" title="item.board.id">'+item.board.name+'</a></td>' +
+                '<td><a style="color: #1E9FFF;" href="javascript:void(0)" title="item.user.id">'+item.user.name+'</a></td>' +
                 '<td>'+item.postTime+'</td>' +
                 '<td>'+item.content+'</td>' +
                 '</tr>';

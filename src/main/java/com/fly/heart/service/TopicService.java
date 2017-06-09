@@ -1,5 +1,6 @@
 package com.fly.heart.service;
 
+import com.fly.heart.bean.Board;
 import com.fly.heart.bean.Topic;
 import com.fly.heart.utils.Message;
 import org.springframework.data.domain.Page;
@@ -16,7 +17,7 @@ import java.util.Map;
 @Service
 public interface TopicService {
 
-    Message writeTopic(long boardId,String title,String content);
+    Message writeTopic(Board board, String title, String content);
 
     Message deleteTopic(long topicId);
 

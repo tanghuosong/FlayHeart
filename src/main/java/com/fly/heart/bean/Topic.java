@@ -25,10 +25,14 @@ public class Topic implements Serializable{
   private int state;
   @Column(name = "favorites")
   private Long favorites;
-  @Column(name = "boardid")
-  private Long boardId;
-  @Column(name = "userid")
-  private Long userId;
+
+  @OneToOne(cascade = { CascadeType.ALL })
+  @JoinColumn(name = "boardid")
+  private Board board;
+
+  @OneToOne(cascade = { CascadeType.ALL })
+  @JoinColumn(name = "userid")
+  private User user;
   @Column(name = "statedisplay")
   private String stateDisplay;
   @Column(name = "posttime")
@@ -37,16 +41,24 @@ public class Topic implements Serializable{
   public Topic() {
   }
 
-  public Topic(String title, String content, int views, int state, Long favorites, Long boardId, Long userId, String stateDisplay, Timestamp postTime) {
+  public Topic(String title, String content, int views, int state, Long favorites, Board board, User user, String stateDisplay, Timestamp postTime) {
     this.title = title;
     this.content = content;
     this.views = views;
     this.state = state;
     this.favorites = favorites;
-    this.boardId = boardId;
-    this.userId = userId;
+    this.board = board;
+    this.user = user;
     this.stateDisplay = stateDisplay;
     this.postTime = postTime;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 
   public Long getId() {
@@ -97,22 +109,6 @@ public class Topic implements Serializable{
     this.favorites = favorites;
   }
 
-  public Long getBoardId() {
-    return boardId;
-  }
-
-  public void setBoardId(Long boardId) {
-    this.boardId = boardId;
-  }
-
-  public Long getUserId() {
-    return userId;
-  }
-
-  public void setUserId(Long userId) {
-    this.userId = userId;
-  }
-
   public String getStateDisplay() {
     return stateDisplay;
   }
@@ -128,5 +124,13 @@ public class Topic implements Serializable{
 
   public void setPostTime(Timestamp postTime) {
     this.postTime = postTime;
+  }
+
+  public Board getBoard() {
+    return board;
+  }
+
+  public void setBoard(Board board) {
+    this.board = board;
   }
 }

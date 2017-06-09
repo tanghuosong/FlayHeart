@@ -46,7 +46,7 @@ var navs = [{
 		"icon": "fa-table",
 		"href": "/admin/allTopics.html"
 	}, {
-		"title": "Navbar组件",
+		"title": "分类列表",
 		"icon": "fa-navicon",
 		"href": "navbar.html"
 	}, {

@@ -1,6 +1,7 @@
 package com.fly.heart.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -49,16 +50,9 @@ public class User {
     this.focusCount = focusCount;
   }
 
-  public User(String name, String phone, String sex, Long state, String email, Timestamp registerTime, Timestamp lastLoginTime, String stateDisplay, Long focusCount) {
+  public User(Long id,String name) {
+    this.id = id;
     this.name = name;
-    this.phone = phone;
-    this.sex = sex;
-    this.state = state;
-    this.email = email;
-    this.registerTime = registerTime;
-    this.lastLoginTime = lastLoginTime;
-    this.stateDisplay = stateDisplay;
-    this.focusCount = focusCount;
   }
 
   @Override
@@ -101,6 +95,7 @@ public class User {
     this.phone = phone;
   }
 
+  @JsonIgnore
   public String getPassword() {
     return password;
   }
