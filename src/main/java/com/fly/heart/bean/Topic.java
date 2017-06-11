@@ -117,7 +117,7 @@ public class Topic implements Serializable{
     this.stateDisplay = stateDisplay;
   }
 
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
   public Date getPostTime() {
     return postTime;
   }

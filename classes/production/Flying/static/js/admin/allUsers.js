@@ -28,7 +28,10 @@ $(function () {
                 '<td>'+item.sex+'</td><td>'+item.email+'</td>' +
                 '<td>'+item.phone+'</td><td>'+item.focusCount+'</td>' +
                 '<td>'+item.registerTime+'</td><td>'+item.lastLoginTime+'</td>' +
-                '<td>'+item.stateDisplay+'</td></tr>';
+                '<td>'+item.stateDisplay+'</td>' +
+                '<td><a  class="updateBtn" href="javascript:void(0)" title="'+item.id+'"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe642;</i></a></td>' +
+                '<th><a  class="deleteBtn" href="javascript:void(0)" title="'+item.id+'"><i class="layui-icon" style="font-size: 30px; color: #FF0000;">&#x1006;</i></a></td>' +
+                '</tr>';
         });
         $("#view").html(contentHtml);
         window.location.re

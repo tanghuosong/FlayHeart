@@ -128,7 +128,7 @@ public class User {
     this.email = email;
   }
 
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
   public Date getRegisterTime() {
     return registerTime;
   }
@@ -137,7 +137,7 @@ public class User {
     this.registerTime = registerTime;
   }
 
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
   public Date getLastLoginTime() {
     return lastLoginTime;
   }

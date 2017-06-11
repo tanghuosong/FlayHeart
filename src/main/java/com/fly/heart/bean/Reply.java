@@ -64,7 +64,7 @@ public class Reply implements Serializable{
     this.content = content;
   }
 
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
   public Date getReplayTime() {
       return replayTime;
   }
