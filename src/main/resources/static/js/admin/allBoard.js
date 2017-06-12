@@ -66,7 +66,7 @@ $(function () {
                 content: '/admin/editBoard.html?id='+obj,
                 cancel: function(index){
                     // if(confirm('确定要关闭么')){
-                        layer.close(index)
+                        layer.close(index);
                     // }
                     return false;
                 }
