@@ -46,7 +46,7 @@ var navs = [{
 		"icon": "fa-table",
 		"href": "/admin/allTopics.html"
 	}, {
-		"title": "Navbar组件",
+		"title": "分类列表",
 		"icon": "fa-navicon",
 		"href": "navbar.html"
 	}, {
@@ -85,13 +85,26 @@ var navs = [{
     "icon": "&#x1002;",
     "spread": false,
     "children": [{
-        "title": "iCheck组件",
+        "title": "公告列表",
         "icon": "fa-check-square-o",
         "href": "icheck.html"
-    }]
+    }, {
+		"title": "发布公告",
+		"icon": "fa-check-square-o",
+		"href": "icheck.html"
+	}]
 }, {
 	"title": "DashBoard",
 	"icon": "fa-stop-circle",
 	"href": "https://www.baidu.com",
-	"spread": false
+	"spread": false,
+    "children": [{
+        "title": "用户信息",
+        "icon": "fa-check-square-o",
+        "href": "icheck.html"
+    }, {
+        "title": "帖子信息",
+        "icon": "fa-check-square-o",
+        "href": "icheck.html"
+    }]
 }];

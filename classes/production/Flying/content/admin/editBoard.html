@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>修改版块信息</title>
+    <link rel="stylesheet" th:href="@{/plugins/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/css/admin/global.css}" media="all"/>
+
+</head>
+<body>
+    <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
+        <!--<legend>修改版块信息</legend>-->
+    <!--</fieldset>-->
+
+    <form class="layui-form" action="" style="margin-top: 20px">
+        <div class="layui-form-item">
+            <label class="layui-form-label">版块名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" required="required"  lay-verify="required" placeholder="请输入版块名称" autocomplete="off" class="layui-input" th:value="${board.name}"/>
+            </div>
+        </div>
+        <input type="hidden" id="selectValue" name="selectValue" th:value="${board.state}"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">版块状态</label>
+            <div class="layui-input-block">
+                <select id="state" name="state"  lay-filter="state">
+                    <option value="100">上线</option>
+                    <option value="200">测试</option>
+                    <option value="300">下线</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">版块描述</label>
+            <div class="layui-input-block">
+                <textarea name="description" placeholder="请输入关于本版块的信息" required="required" class="layui-textarea" th:text="${board.description}"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="lay-submit" lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</body>
+<script type="text/javascript" th:src="@{/plugins/layui/layui.js}"></script>
+<script th:src="@{/jquery-3.0.0.min.js}"></script>
+<script th:src="@{/js/admin/editBoard.js}"></script>
+</html>

@@ -4,7 +4,7 @@
 $(function () {
     var pageNum = 1;
 
-    getData(pageNum)
+    getData(pageNum);
 
     function getData(pageNum) {
         $.ajax({
@@ -21,28 +21,23 @@ $(function () {
     function showTable(pageNum,result) {
         var list = result.content;
         var totalPages = result.totalPages;
-        var contentHtml = '<table class="layui-table"><colgroup><col width="50"/><col width="150"/><col width="150"/><col width="200"/><col/></colgroup>'+
-            '<thead><tr><th><input name="" lay-skin="primary" lay-filter="allChoose" type="checkbox"/><div class="layui-unselect layui-form-checkbox" lay-skin="primary">' +
-            '<i class="layui-icon"></i></div></th><th>编号</th><th>标题</th><th>发表时间</th><th>内容</th></tr></thead>'+
-            '<tbody id="view">';
+        var contentHtml = '';
         $.each(list,function (v,item) {
-            contentHtml +='<tr><td><input name="" lay-skin="primary" type="checkbox"/><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i class="layui-icon"></i></div></td>' +
-                '<td>'+item.id +'</td><td>'+item.title+'</td><td>'+item.postTime+'</td><td>'+item.content+'</td></tr>';
+            contentHtml +='<tr>' +
+                '<td>'+item.id +'</td>' +
+                '<td>'+item.title+'</td>' +
+                '<td><a class="topic_board" style="color: #1E9FFF;" href="javascript:void(0)" title="'+item.board.id+'">'+item.board.name+'</a></td>' +
+                '<td><a class="topic_user" style="color: #1E9FFF;" href="javascript:void(0)" title="'+item.user.id+'">'+item.user.name+'</a></td>' +
+                '<td>'+item.postTime+'</td>' +
+                '<td class="content">'+item.content+'</td>'+
+                '<td >'+item.views+'</td>'+
+                '<td >'+item.favorites+'</td>'+
+                '<td><a class="topic-details" style="color: #1E9FFF;" href="javascript:void(0)">查看详情</a></td>' +
+                '<td><a  class="updateBtn" href="javascript:void(0)" title="'+item.id+'"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe642;</i></a></td>' +
+                '<th><a  class="deleteBtn" href="javascript:void(0)" title="'+item.id+'"><i class="layui-icon" style="font-size: 30px; color: #FF0000;">&#x1006;</i></a></td>' +
+                '</tr>';
         });
-        contentHtml = contentHtml+'</tbody></table>';
-        $("#tableContent").html(contentHtml);
-
-        layui.use('form',function () {
-            var form = layui.form();
-            //全选
-            form.on('checkbox(allChoose)', function (data) {
-                var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
-                child.each(function (index, item) {
-                    item.checked = data.elem.checked;
-                });
-                form.render('checkbox');
-            });
-        });
+        $("#view").html(contentHtml);
 
         layui.use(['laytpl','laypage'], function() {
             var laypage = layui.laypage;
@@ -62,4 +57,55 @@ $(function () {
             });
         });
     }
+
+    $(".topic_board").click(function () {
+
+    });
+
+    $(".topic_user").click(function () {
+
+    });
+
+    $(".topic-details").click(function () {
+        var content = $(this).parent().parent().children(".content").text();
+
+    });
+
+    $(".deleteBtn").click(function () {
+        // alert(this.title);
+        // var obj = $(this);
+        // $.ajax({
+        //     url:"/v1/board/deleteBoardById",
+        //     type:"POST",
+        //     data:{id:this.title},
+        //     success:function (msg) {
+        //         if(msg.success){
+        //             obj.parent().parent().remove();
+        //         }
+        //         layui.use('layer',function () {
+        //             layer.msg(msg.content);
+        //         })
+        //     }
+        // });
+    });
+
+    $(".updateBtn").click(function () {
+        // var obj = this.title;
+        // layui.use('layer',function () {
+        //     layer.open({
+        //         title:"修改版块信息",
+        //         type: 2
+        //         ,area: ['500px', '400px']
+        //         ,shade: 0
+        //         ,maxmin: true,
+        //         content: '/admin/editBoard.html?id='+obj,
+        //         cancel: function(index){
+        //             // if(confirm('确定要关闭么')){
+        //             layer.close(index)
+        //             // }
+        //             return false;
+        //         }
+        //     });
+        // });
+    });
 });

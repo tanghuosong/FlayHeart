@@ -4,7 +4,7 @@
 $(function () {
     var pageNum = 1;
 
-    getData(pageNum)
+    getData(pageNum);
 
     function getData(pageNum) {
         $.ajax({
@@ -26,8 +26,15 @@ $(function () {
             contentHtml +='<tr>' +
                 '<td>'+item.id +'</td>' +
                 '<td>'+item.title+'</td>' +
+                '<td><a class="topic_board" style="color: #1E9FFF;" href="javascript:void(0)" title="'+item.board.id+'">'+item.board.name+'</a></td>' +
+                '<td><a class="topic_user" style="color: #1E9FFF;" href="javascript:void(0)" title="'+item.user.id+'">'+item.user.name+'</a></td>' +
                 '<td>'+item.postTime+'</td>' +
-                '<td>'+item.content+'</td>' +
+                '<td class="content">'+item.content+'</td>'+
+                '<td >'+item.views+'</td>'+
+                '<td >'+item.favorites+'</td>'+
+                '<td><a class="topic-details" style="color: #1E9FFF;" href="javascript:void(0)">查看详情</a></td>' +
+                '<td><a  class="updateBtn" href="javascript:void(0)" title="'+item.id+'"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe642;</i></a></td>' +
+                '<th><a  class="deleteBtn" href="javascript:void(0)" title="'+item.id+'"><i class="layui-icon" style="font-size: 30px; color: #FF0000;">&#x1006;</i></a></td>' +
                 '</tr>';
         });
         $("#view").html(contentHtml);
@@ -50,4 +57,55 @@ $(function () {
             });
         });
     }
+
+    $(".topic_board").click(function () {
+
+    });
+
+    $(".topic_user").click(function () {
+
+    });
+
+    $(".topic-details").click(function () {
+        var content = $(this).parent().parent().children(".content").text();
+
+    });
+
+    $(".deleteBtn").click(function () {
+        // alert(this.title);
+        // var obj = $(this);
+        // $.ajax({
+        //     url:"/v1/board/deleteBoardById",
+        //     type:"POST",
+        //     data:{id:this.title},
+        //     success:function (msg) {
+        //         if(msg.success){
+        //             obj.parent().parent().remove();
+        //         }
+        //         layui.use('layer',function () {
+        //             layer.msg(msg.content);
+        //         })
+        //     }
+        // });
+    });
+
+    $(".updateBtn").click(function () {
+        // var obj = this.title;
+        // layui.use('layer',function () {
+        //     layer.open({
+        //         title:"修改版块信息",
+        //         type: 2
+        //         ,area: ['500px', '400px']
+        //         ,shade: 0
+        //         ,maxmin: true,
+        //         content: '/admin/editBoard.html?id='+obj,
+        //         cancel: function(index){
+        //             // if(confirm('确定要关闭么')){
+        //             layer.close(index)
+        //             // }
+        //             return false;
+        //         }
+        //     });
+        // });
+    });
 });

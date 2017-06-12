@@ -16,8 +16,20 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>用户列表</legend>
     </fieldset>
-    <div id="contentTable"></div>
-
+    <div class="layui-form">
+        <table class="layui-table">
+            <colgroup>
+                <col width="60"/><col width="120"/><col width="60"/><col width="160"/><col/><col width="60"/><col width="60"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>编号</th><th>姓名</th><th>性别</th><th>邮箱</th><th>手机号</th>
+                    <th>被关注人数</th><th>注册时间</th><th>最后登录时间</th><th>状态</th><th>修改</th><th>删除</th>
+                </tr>
+            </thead>
+            <tbody id="view"></tbody>
+        </table>
+    </div>
     <div id="pageDemo7" style="display:inline-block;text-align: center;width: 100%"></div>
 </body>
 <script type="text/javascript" th:src="@{/jquery-3.0.0.min.js}"></script>
