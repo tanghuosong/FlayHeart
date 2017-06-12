@@ -9,18 +9,16 @@ $(function () {
         var form = layui.form();
         //监听提交
         form.on('submit(formDemo)', function(data){
-            // layer.msg(JSON.stringify(data.field));
             $.ajax({
                 type: "POST",
-                url: "/v1/board/saveBoard",
+                url: "/v1/board/updateBoard",
                 async:true,
-                data: {name:data.field.name,description:data.field.description},
-                success: function (meg) {
-                    if(meg.success){
-                        $("input[name='name']").val("");
-                        $("textarea[name='description']").val("");
+                data: {id:data.field.id,name:data.field.name,description:data.field.description,state:data.field.state},
+                success: function (msg) {
+                    if(msg.success){
+                        layer.close(this);
                     }
-                    layer.msg(meg.content);
+                    layer.msg(msg.content);
                 }
             });
             return false;

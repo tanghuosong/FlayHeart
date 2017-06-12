@@ -70,6 +70,7 @@ public class BoardServiceImpl implements BoardService{
                 board.setState(100L);
                 board.setStateDisplay("上线");
                 board.setCreateTime(new Timestamp(System.currentTimeMillis()));
+                board.setUpdateTime(new Timestamp(System.currentTimeMillis()));
                 boardDao.save(board);
                 message.setSuccess(true);
                 message.setContent("添加成功！");
@@ -99,6 +100,37 @@ public class BoardServiceImpl implements BoardService{
            message.setSuccess(false);
            e.printStackTrace();
        }
+        return message;
+    }
+
+    @Override
+    public Message updateBoard(Board board) {
+        Message message = new Message();
+        switch (board.getState().intValue()){
+            case 100:
+                board.setStateDisplay("上线");
+                break;
+            case 200:
+                board.setStateDisplay("测试");
+                break;
+            case 300:
+                board.setStateDisplay("下线");
+                break;
+        }
+        try{
+            int result = boardDao.updateBoard(board.getName(),board.getDescription(),board.getState(),board.getStateDisplay(),new Timestamp(System.currentTimeMillis()),board.getId());
+            if(result ==1 ){
+                message.setContent("更新成功！");
+                message.setSuccess(true);
+            }else{
+                message.setContent("该版块不存在，请刷新重试！");
+                message.setSuccess(false);
+            }
+        }catch (Exception e){
+            message.setContent("更新失败:"+e.getMessage());
+            message.setSuccess(false);
+            e.printStackTrace();
+        }
         return message;
     }
 }

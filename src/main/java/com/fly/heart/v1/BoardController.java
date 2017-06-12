@@ -56,4 +56,9 @@ public class BoardController {
         return boardService.deleteBoardById(id);
     }
 
+    @RequestMapping(value = "/updateBoard",method = RequestMethod.POST)
+    @ResponseBody
+    Message updateBoard(Board board){
+        return boardService.updateBoard(board);
+    }
 }

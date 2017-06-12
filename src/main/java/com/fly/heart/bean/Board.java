@@ -3,6 +3,7 @@ package com.fly.heart.bean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -22,16 +23,19 @@ public class Board {
   private String stateDisplay;
   @Column(name = "createtime")
   private Timestamp createTime;
+  @Column(name = "updatetime")
+  private Timestamp updateTime;
 
   public Board() {
   }
 
-  public Board(String name, String description, Long state, String stateDisplay, Timestamp createTime) {
+  public Board(String name, String description, Long state, String stateDisplay, Timestamp createTime,Timestamp updateTime) {
     this.name = name;
     this.description = description;
     this.state = state;
     this.stateDisplay = stateDisplay;
     this.createTime = createTime;
+    this.updateTime  = updateTime;
   }
 
   @Override
@@ -42,6 +46,7 @@ public class Board {
             ", state=" + state +
             ", stateDisplay='" + stateDisplay + '\'' +
             ", createTime=" + createTime +
+            ", updateTime =" + updateTime +
             '}';
   }
 
@@ -94,4 +99,12 @@ public class Board {
     this.createTime = createTime;
   }
 
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  public Date getUpdateTime() {
+    return updateTime;
+  }
+
+  public void setUpdateTime(Timestamp updateTime) {
+    this.updateTime = updateTime;
+  }
 }

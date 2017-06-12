@@ -25,4 +25,6 @@ public interface BoardService {
     Message saveBoard(Board board);
 
     Message deleteBoardById(Long id);
+
+    Message updateBoard(Board board);
 }

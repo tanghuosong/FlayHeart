@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>修改版块信息</title>
+    <title>更新版块信息</title>
     <link rel="stylesheet" th:href="@{/plugins/layui/css/layui.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/css/admin/global.css}" media="all"/>
 
@@ -19,6 +19,7 @@
                 <input type="text" name="name" required="required"  lay-verify="required" placeholder="请输入版块名称" autocomplete="off" class="layui-input" th:value="${board.name}"/>
             </div>
         </div>
+        <input name="id" th:value="${board.id}" type="hidden"/>
         <input type="hidden" id="selectValue" name="selectValue" th:value="${board.state}"/>
         <div class="layui-form-item">
             <label class="layui-form-label">版块状态</label>
