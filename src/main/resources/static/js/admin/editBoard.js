@@ -5,7 +5,7 @@ $(function () {
 
     $("#state").val($("#selectValue").val());
 
-    layui.use('form', function(){
+    layui.use(['form','layer'], function(){
         var form = layui.form();
         //监听提交
         form.on('submit(formDemo)', function(data){
@@ -24,4 +24,4 @@ $(function () {
             return false;
         });
     });
-})
+});
