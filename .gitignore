@@ -23,3 +23,10 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### class
+classes
+
+###
+out
+out/
